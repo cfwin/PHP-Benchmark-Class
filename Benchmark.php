@@ -66,14 +66,8 @@ class Benchmark
      */
     public function time( $name, $callback, $multiple = false )
     {
-        if(function_exists('is_closure')) {
-            if(!is_callable($callback) && !is_closure($callback)) {
-                throw new Exception(__CLASS__.'::'.__FUNCTION__.' requires argument $callback to be callable or closure.');
-            }
-        } else {
-            if(!is_callable($callback)) {
-                throw new Exception(__CLASS__.'::'.__FUNCTION__.' requires argument $callback to be callable.');
-            }
+        if(!is_callable($callback)) {
+            throw new Exception(__CLASS__.'::'.__FUNCTION__.' requires argument $callback to be callable.');
         }
 
         if( $multiple === false ) {
